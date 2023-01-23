@@ -8,10 +8,15 @@ const middlewares = jsonServer.defaults();
 
 server.use(middlewares);
 
+server.use(jsonServer.rewriter({
+    '/api/*': '/$1',
+    '/data/:id': '/:id'
+}));
+
 server.use(router);
 
-const port = process.env.PORT || 9000;
+const PORT = process.env.PORT || 9000;
 
-server.listen(port, () => {
-    console.log(`JSON Server is running on port ${port}`);
+server.listen(PORT, () => {
+    console.log(`JSON Server is running on port ${PORT}`);
 });
