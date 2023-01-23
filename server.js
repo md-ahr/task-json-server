@@ -14,12 +14,6 @@ const middlewares = jsonServer.defaults();
 
 server.use(middlewares);
 
-server.use(
-    jsonServer.rewriter({
-        "/api/*": "/$1",
-    })
-);
-
 server.use((req, res, next) => {
     if (req.path !== "/") router.db.setState(clone(data));
     next();
