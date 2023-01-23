@@ -10,7 +10,6 @@ server.use(middlewares);
 
 server.use(jsonServer.rewriter({
     '/api/*': '/$1',
-    '/data/:id': '/:id'
 }));
 
 server.use(router);
